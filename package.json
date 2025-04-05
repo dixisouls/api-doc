@@ -1,0 +1,31 @@
+{
+  "name": "api-docs-generator",
+  "version": "1.0.0",
+  "description": "AI-powered API documentation generator",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
+  "scripts": {
+    "start": "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT",
+    "build": "cd frontend && npm install && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "cacheDirectories": [
+    "frontend/node_modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dixisouls/api-docs-generator.git"
+  },
+  "keywords": [
+    "api",
+    "documentation",
+    "generator",
+    "gemini",
+    "fastapi",
+    "react"
+  ],
+  "author": "dixisouls",
+  "license": "MIT"
+}
