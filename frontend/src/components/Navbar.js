@@ -34,7 +34,7 @@ function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [location]);
+  }, [location, isMenuOpen]);
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
@@ -56,22 +56,22 @@ function Navbar() {
           <ul className={`navbar-links ${isMenuOpen ? "active" : ""}`}>
             <li className={location.pathname === "/" ? "active" : ""}>
               <Link to="/" onClick={closeMenu}>
-                Home
+                <i className="fas fa-home"></i> Home
               </Link>
             </li>
             <li className={location.pathname === "/generate" ? "active" : ""}>
               <Link to="/generate" onClick={closeMenu}>
-                Generate
+                <i className="fas fa-magic"></i> Generate
               </Link>
             </li>
             <li className={location.pathname === "/about" ? "active" : ""}>
               <Link to="/about" onClick={closeMenu}>
-                About
+                <i className="fas fa-info-circle"></i> About
               </Link>
             </li>
             <li>
               <a
-                href="https://github.com/dixisouls/api-docs-generator"
+                href="https://github.com/dixisouls"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-github"
