@@ -74,18 +74,16 @@ function Generator() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const apiUrl =
-      process.env.NODE_ENV === "production"
-        ? "/api/generate" // In production, use relative path
-        : `${
-            process.env.REACT_APP_API_URL || "http://localhost:8000"
-          }/api/generate`;
-
     try {
-      const response = await fetch(apiUrl, {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `${
+          process.env.REACT_APP_API_URL || "http://localhost:8000"
+        }/api/generate`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();

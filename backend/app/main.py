@@ -1,17 +1,11 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException, BackgroundTasks
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
 import os
 import tempfile
 import shutil
 from app.services.generator import generate_documentation
 from app.services.file_service import create_zip_file
-from pathlib import Path
-
-# Get port from environment variable (for Heroku compatibility)
-PORT = int(os.getenv("PORT", 8000))
 
 app = FastAPI(
     title="API Documentation Generator",
@@ -19,10 +13,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS - updated for Heroku
+# Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For production, you might want to limit this
+    allow_origins=["*"],  # Update for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -36,9 +30,9 @@ async def cleanup():
     """Clean up temporary files on shutdown"""
     shutil.rmtree(temp_dir, ignore_errors=True)
 
-@app.get("/api")
+@app.get("/")
 async def root():
-    """Root API endpoint"""
+    """Root endpoint"""
     return {"message": "API Documentation Generator API is running"}
 
 @app.post("/api/generate")
@@ -81,17 +75,3 @@ async def generate_api_docs(
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-# Check if we're running in production (Heroku)
-if os.getenv("ENVIRONMENT", "development") == "production":
-    # Serve static files from the frontend build directory
-    app.mount("/", StaticFiles(directory="frontend/build", html=True), name="static")
-    
-    # To avoid 404 on page refresh for client-side routing
-    @app.get("/{full_path:path}", include_in_schema=False)
-    async def serve_frontend(full_path: str):
-        frontend_path = Path("frontend/build/index.html")
-        if frontend_path.exists():
-            with open(frontend_path) as f:
-                return HTMLResponse(content=f.read())
-        return {"message": "Frontend not found"}
