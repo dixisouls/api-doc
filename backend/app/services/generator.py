@@ -5,6 +5,7 @@ from typing import Dict, Any
 import asyncio
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
 
 async def generate_documentation(file_path: str) -> Dict[str, Any]:
     """
@@ -17,6 +18,7 @@ async def generate_documentation(file_path: str) -> Dict[str, Any]:
         Dictionary containing the API documentation in JSON format
     """
     # Get API key from environment variables
+    load_dotenv()
     api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
         raise ValueError("GOOGLE_API_KEY environment variable is not set")
