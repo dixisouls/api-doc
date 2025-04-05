@@ -75,14 +75,15 @@ function Generator() {
     formData.append("file", file);
 
     try {
-      const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8000";
-      const url = `${
-        apiUrl.endsWith("/") ? apiUrl.slice(0, -1) : apiUrl
-      }/api/generate`;
-      const response = await fetch(url, {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `${
+          process.env.REACT_APP_API_URL || "http://localhost:8000"
+        }/api/generate`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
