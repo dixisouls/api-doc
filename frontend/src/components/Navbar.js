@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../styles/Navbar.css";
 
@@ -11,12 +11,11 @@ function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Use useCallback to memoize the closeMenu function
-  const closeMenu = useCallback(() => {
+  const closeMenu = () => {
     if (isMenuOpen) {
       setIsMenuOpen(false);
     }
-  }, [isMenuOpen]);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +34,7 @@ function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [location, closeMenu]); // Include closeMenu in dependencies
+  }, [location, isMenuOpen]);
 
   return (
     <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
