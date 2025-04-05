@@ -32,11 +32,25 @@ async def create_zip_file(documentation: Dict[str, Any], temp_dir: str) -> str:
     with open(template_path, "r", encoding="utf-8") as f:
         html_template = f.read()
     
-    # Replace placeholder data in template with actual documentation
-    html_content = html_template.replace(
-        'const apiData = [',
-        f'const apiData = {json.dumps(documentation, indent=2)};'
-    )
+    # Find the sample data section in the template
+    start_marker = 'const apiData = ['
+    end_marker = '];'
+    start_index = html_template.find(start_marker)
+    end_index = html_template.find(end_marker, start_index) + len(end_marker)
+    
+    # Replace the sample data with actual documentation
+    if start_index >= 0 and end_index > start_index:
+        html_content = (
+            html_template[:start_index] +
+            f'const apiData = {json.dumps(documentation, indent=2)};' +
+            html_template[end_index:]
+        )
+    else:
+        # Fallback to simple replacement if pattern not found
+        html_content = html_template.replace(
+            'const apiData = [',
+            f'const apiData = {json.dumps(documentation, indent=2)};'
+        )
     
     # Write HTML file
     with open(html_path, "w", encoding="utf-8") as f:
