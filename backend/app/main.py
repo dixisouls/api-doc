@@ -13,16 +13,23 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# Configure CORS
+# Configure CORS - updated for deployment
+origins = [
+    "http://localhost:3000",           # Local development
+    "https://forge-api-rose.vercel.app/",  # Your Vercel app URL (update with your actual URL)
+    "https://*.vercel.app",            # All Vercel preview deployments
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Create temp directory for files
+# Heroku has an ephemeral filesystem, so files will be temporary anyway
 temp_dir = tempfile.mkdtemp()
 
 
