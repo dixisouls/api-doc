@@ -1,0 +1,118 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/Footer.css";
+
+function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="footer">
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <Link to="/" className="footer-logo">
+              <i className="fas fa-code"></i>
+              <span>API Docs Generator</span>
+            </Link>
+            <p className="footer-tagline">
+              Transform your code into beautiful API documentation with AI
+            </p>
+          </div>
+
+          <div className="footer-links">
+            <div className="footer-links-column">
+              <h4>Site Map</h4>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/generate">Generate Docs</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="footer-links-column">
+              <h4>Resources</h4>
+              <ul>
+                <li>
+                  <a
+                    href="https://github.com/dixisouls/api-docs-generator"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub Repository
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/dixisouls/api-docs-generator/issues"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Report an Issue
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="footer-links-column">
+              <h4>Connect</h4>
+              <ul className="social-links">
+                <li>
+                  <a
+                    href="https://github.com/dixisouls"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-github"></i>
+                    <span>GitHub</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://dockerhub.com/u/dixisouls"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-docker"></i>
+                    <span>Docker Hub</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://huggingface.co/dixisouls"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fas fa-robot"></i>
+                    <span>Hugging Face</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p className="footer-copyright">
+            &copy; {currentYear} API Documentation Generator | Created by
+            <a
+              href="https://github.com/dixisouls"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {" "}
+              dixisouls
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;
