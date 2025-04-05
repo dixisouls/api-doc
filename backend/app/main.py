@@ -17,7 +17,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://your-frontend-app-name.vercel.app",
+        "https://forge-api-nine.vercel.app/",
         "http://localhost:3000",
     ],
     allow_credentials=True,
