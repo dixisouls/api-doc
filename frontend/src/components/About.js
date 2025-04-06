@@ -6,13 +6,13 @@ function About() {
   return (
     <div className="about-page">
       <div className="container">
-        <h1 className="page-title">About API Documentation Generator</h1>
+        <h1 className="page-title">About Forge API</h1>
 
         <div className="about-content">
           <section className="about-section">
-            <h2>What is API Documentation Generator?</h2>
+            <h2>What is Forge API?</h2>
             <p>
-              API Documentation Generator is a powerful tool that leverages
+              Forge API is a powerful tool that leverages
               artificial intelligence to automatically generate beautiful,
               interactive documentation for your APIs. Simply upload your code
               files, and our advanced AI will analyze them to extract API

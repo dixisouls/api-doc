@@ -42,7 +42,7 @@ function Navbar() {
         <div className="navbar-content">
           <Link to="/" className="navbar-brand" onClick={closeMenu}>
             <i className="fas fa-code"></i>
-            <span>API Docs Generator</span>
+            <span>Forge API</span>
           </Link>
 
           <div className="navbar-menu-toggle" onClick={toggleMenu}>

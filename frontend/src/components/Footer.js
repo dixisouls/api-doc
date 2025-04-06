@@ -13,7 +13,7 @@ function Footer() {
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
               <i className="fas fa-code"></i>
-              <span>API Docs Generator</span>
+              <span>Forge API</span>
             </Link>
             <p className="footer-tagline">
               Transform your code into beautiful, interactive API documentation
@@ -109,7 +109,7 @@ function Footer() {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            &copy; {currentYear} API Documentation Generator | Created with{" "}
+            &copy; {currentYear} Forge API | Created with{" "}
             <i className="fas fa-heart" style={{ color: "#ff5722" }}></i> by
             <a
               href="https://divyapanchal.com/"
