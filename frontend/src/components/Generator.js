@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { generateDocumentation } from "../services/api";
 import "../styles/Generator.css";
 
 function Generator() {
@@ -71,24 +72,8 @@ function Generator() {
     setDownloadUrl(null);
     simulateProgress();
 
-    const formData = new FormData();
-    formData.append("file", file);
-
     try {
-      const response = await fetch(
-        `${
-          process.env.REACT_APP_API_URL || "https://forge-api-backend-acc422335e48.herokuapp.com"
-        }/api/generate`,
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || "Error generating documentation");
-      }
+      const response = await generateDocumentation(file);
 
       // Complete the progress to 100%
       setProgress(100);
