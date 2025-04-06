@@ -13,10 +13,15 @@ app = FastAPI(
     version="1.0.0",
 )
 
+origins = [
+    "http://localhost:3000",           # Local development
+    "https://forge-api-rose.vercel.app",  # Your actual Vercel app URL
+]
+
 # Configure CORS - updated for debugging
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Temporarily allow all origins for debugging
+    allow_origins=origins,  # Temporarily allow all origins for debugging
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
