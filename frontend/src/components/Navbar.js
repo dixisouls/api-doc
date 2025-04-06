@@ -71,7 +71,7 @@ function Navbar() {
             </li>
             <li>
               <a
-                href="https://github.com/dixisouls"
+                href="https://github.com/dixisouls/api-doc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-github"

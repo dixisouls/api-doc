@@ -42,7 +42,7 @@ function Footer() {
             <ul>
               <li>
                 <a
-                  href="https://github.com/dixisouls/api-docs-generator"
+                  href="https://github.com/dixisouls/api-doc"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -51,7 +51,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/dixisouls/api-docs-generator/issues"
+                  href="https://github.com/dixisouls/api-doc/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -60,7 +60,7 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/dixisouls/api-docs-generator/blob/main/README.md"
+                  href="https://github.com/dixisouls/api-doc/blob/main/README.md"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
