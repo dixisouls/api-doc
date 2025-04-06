@@ -77,7 +77,7 @@ function Generator() {
     try {
       const response = await fetch(
         `${
-          process.env.REACT_APP_API_URL || "http://localhost:8000"
+          process.env.REACT_APP_API_URL || "https://forge-api-backend-acc422335e48.herokuapp.com"
         }/api/generate`,
         {
           method: "POST",
